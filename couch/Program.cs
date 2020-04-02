@@ -35,14 +35,14 @@ namespace couch
                 }
             };
             
-            var upsert = bucket.Upsert(document);
-            if (upsert.Success)
-            {
-                var get = bucket.GetDocument<dynamic>(document.Id);
-                document = get.Document;
-                var msg = string.Format("{0} {1}!", document.Id, document.Content.name);
-                Console.WriteLine(msg);
-            }
+            //var upsert = bucket.Upsert(document);
+            //if (upsert.Success)
+            //{
+            //    var get = bucket.GetDocument<dynamic>(document.Id);
+            //    document = get.Document;
+            //    var msg = string.Format("{0} {1}!", document.Id, document.Content.name);
+            //    Console.WriteLine(msg);
+            //}
 
             //var document2 = new Document<dynamic>
             //{
@@ -69,7 +69,7 @@ namespace couch
                 Console.WriteLine(JsonConvert.SerializeObject(row));
             }
             
-            var query2 = new QueryRequest("UPDATE `travel-sample` SET name = `change` WHERE name=`new sample`");
+            var query2 = new QueryRequest("UPDATE `travel-sample` SET name = \"new sample\" WHERE name=\"change\"");
             if(bucket.Query<dynamic>(query2)!=null)
             {
                 Console.WriteLine("Hi");
